@@ -1,0 +1,48 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Main extends JFrame implements ActionListener {
+
+    // 1. المكونات
+    JRadioButton r1 = new JRadioButton("Apple");
+    JRadioButton r2 = new JRadioButton("Orange");
+    JButton btn = new JButton("Submit");
+
+    // 2. المُنشئ
+    public Main() {
+        setTitle("JRadioButton Example");
+        setSize(300, 250);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new FlowLayout());
+
+        // 3. تجميع أزرار الراديو في مجموعة
+        ButtonGroup group = new ButtonGroup();
+        group.add(r1);
+        group.add(r2);
+
+        // 4. إضافة المكونات
+        add(r1);
+        add(r2);
+        add(btn);
+
+        // 5. ربط الزر بالحدث
+        btn.addActionListener(this);
+    }
+
+    // 6. الدالة التي تنفذ عند الضغط
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (r1.isSelected()) {
+            JOptionPane.showMessageDialog(this, "You select Apple !");
+        }
+        if (r2.isSelected()) {
+            JOptionPane.showMessageDialog(this, "You select Orange !");
+        }
+    }
+
+    // 7. نقطة البداية
+    public static void main(String[] args) {
+        new Main().setVisible(true);
+    }
+}
